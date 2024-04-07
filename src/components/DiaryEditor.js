@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { DiaryDispatchContext } from "../App";
 import MyButton from "./MyButton";
 import MyHeader from "./MyHeader";
 import EmotionItem from "./EmotionItem";
@@ -38,11 +39,26 @@ const getStringDate = (date) => {
 
 const DiaryEditor = () => {
   const navigate = useNavigate();
+  const contentRef = useRef();
+  const [content, setContent] = useState("");
   const [emotion, setEmotion] = useState(3);
   const [date, setDate] = useState(getStringDate(new Date()));
+  const { onCreate } = useContext(DiaryDispatchContext);
+
   const handleClickEmote = (emotion) => {
     setEmotion(emotion);
   };
+
+  const handleSubmit = () => {
+    if (content.length < 1) {
+      contentRef.current.focus();
+      return;
+    }
+
+    onCreate(date, content, emotion);
+    navigate("/", { replace: true });
+  };
+
   return (
     <div className="DiaryEditor">
       <MyHeader
@@ -79,6 +95,27 @@ const DiaryEditor = () => {
                 isSelected={it.emotion_id === emotion}
               />
             ))}
+          </div>
+        </section>
+        <section>
+          <h4>今日の日記</h4>
+          <div className="input_box text_wrapper">
+            <textarea
+              ref={contentRef}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="今日はいかがでしたか。"
+            />
+          </div>
+        </section>
+        <section>
+          <div className="control_box">
+            <MyButton text={"取り消し"} onClick={() => navigate(-1)} />
+            <MyButton
+              text={"作成完了"}
+              type={"positive"}
+              onClick={handleSubmit}
+            />
           </div>
         </section>
       </div>
