@@ -1,8 +1,14 @@
 import { useState } from "react";
 
 const sortOptionList = [
-  { value: "lastest", name: "최신순" },
-  { value: "oldest", name: "오래된 순" },
+  { value: "lastest", name: "新着順" },
+  { value: "oldest", name: "古い順" },
+];
+
+const filterOptionList = [
+  { value: "all", name: "全て" },
+  { value: "good", name: "良い感情だけ" },
+  { value: "bad", name: "悪い感情だけ" },
 ];
 
 const ControlMenu = ({ value, onChange, optionList }) => {
@@ -19,6 +25,8 @@ const ControlMenu = ({ value, onChange, optionList }) => {
 
 const DiaryList = ({ diaryList }) => {
   const [sortType, setSortType] = useState("lastest");
+  const [filter, setFilter] = useState("all");
+
   const getProcessedDiaryList = () => {
     const compare = (a, b) => {
       if (sortType === "lastest") {

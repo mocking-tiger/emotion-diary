@@ -1,11 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&family=Nanum+Pen+Script&family=Yeon+Sung&display=swap");
 body {
   background-color: #f6f6f6;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Nanum Pen Script";
+  font-family: "DotGothic16", sans-serif;
   min-height: 100vh;
   margin: 0;
 }
