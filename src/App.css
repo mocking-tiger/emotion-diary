@@ -4,7 +4,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "DotGothic16", sans-serif;
+  font-family: "DotGothic16", "Yeon Sung", "Nanum Pen Script", sans-serif;
   min-height: 100vh;
   margin: 0;
 }
@@ -43,7 +43,7 @@ body {
   font-size: 18px;
 
   white-space: nowrap;
-  font-family: "Nanum Pen Script";
+  font-family: "DotGothic16", "Yeon Sung", "Nanum Pen Script", sans-serif;
 }
 
 .MyButton_default {
@@ -92,4 +92,31 @@ header .head_btn_right {
 
 header button {
   font-family: "Nanum Pen Script";
+}
+
+/* DiaryList */
+
+.DiaryList .menu_wrapper {
+  margin: 20px 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.DiaryList .menu_wrapper .right_col {
+  flex-grow: 1;
+}
+
+.DiaryList .menu_wrapper .right_col button {
+  width: 100%;
+}
+
+.DiaryList .ControlMenu {
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ececec;
+  padding: 10px 20px 10px;
+  cursor: pointer;
+  font-family: "DotGothic16", "Yeon Sung", "Nanum Pen Script", sans-serif;
+  font-size: 1rem;
 }
