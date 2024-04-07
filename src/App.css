@@ -120,3 +120,41 @@ header button {
   font-family: "DotGothic16", "Yeon Sung", "Nanum Pen Script", sans-serif;
   font-size: 1rem;
 }
+
+/* DiaryItem */
+
+.DiaryItem {
+  padding: 15px 0 15px;
+  border-bottom: 1px solid #e2e2e2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.DiaryItem .emotion_img_wrapper {
+  cursor: pointer;
+  min-width: 120px;
+  height: 80px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.DiaryItem .info_wrapper {
+  flex-grow: 1;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.DiaryItem .diary_date {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.DiaryItem .diary_content_preview {
+  font-size: 1.2rem;
+}
+
+.DiaryItem .btn_wrapper {
+  min-width: 70px;
+}
