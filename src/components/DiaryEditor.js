@@ -15,7 +15,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const [content, setContent] = useState("");
   const [emotion, setEmotion] = useState(3);
   const [date, setDate] = useState(getStringDate(new Date()));
-  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
+  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
 
   const handleClickEmote = (emotion) => {
     setEmotion(emotion);
@@ -39,6 +39,13 @@ const DiaryEditor = ({ isEdit, originData }) => {
     navigate("/", { replace: true });
   };
 
+  const handleRemove = () => {
+    if (window.confirm("日記を削除しますか。")) {
+      onRemove(originData.id);
+      navigate("/", { replace: true });
+    }
+  };
+
   useEffect(() => {
     if (isEdit) {
       setDate(getStringDate(new Date(parseInt(originData.date))));
@@ -58,6 +65,11 @@ const DiaryEditor = ({ isEdit, originData }) => {
               navigate(-1);
             }}
           />
+        }
+        rightChild={
+          isEdit && (
+            <MyButton text={"削除"} type={"negative"} onClick={handleRemove} />
+          )
         }
       />
       <div>

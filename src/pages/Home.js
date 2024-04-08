@@ -21,7 +21,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (diaryList.length > 1) {
+    if (diaryList.length >= 1) {
       const firstDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth(),

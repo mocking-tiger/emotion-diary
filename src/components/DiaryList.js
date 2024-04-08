@@ -43,6 +43,7 @@ const DiaryList = ({ diaryList }) => {
         return parseInt(item.emotion) > 3;
       }
     };
+
     const compare = (a, b) => {
       if (sortType === "lastest") {
         return parseInt(b.date) - parseInt(a.date);
@@ -50,10 +51,12 @@ const DiaryList = ({ diaryList }) => {
         return parseInt(a.date) - parseInt(b.date);
       }
     };
+
     const copyList = JSON.parse(JSON.stringify(diaryList));
     const filteredList =
       filter === "all" ? copyList : copyList.filter((it) => filterCallBack(it));
     const sortedList = filteredList.sort(compare);
+
     return sortedList;
   };
 

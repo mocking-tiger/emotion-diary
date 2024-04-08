@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -31,48 +31,18 @@ const reducer = (state, action) => {
     default:
       return state;
   }
+
+  localStorage.setItem("diary", JSON.stringify(newState));
   return newState;
 };
 
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
-const dummyData = [
-  {
-    id: 1,
-    emotion: 1,
-    content: "今日の日記 1番",
-    date: 1712484952181,
-  },
-  {
-    id: 2,
-    emotion: 2,
-    content: "今日の日記 2番",
-    date: 1712484952182,
-  },
-  {
-    id: 3,
-    emotion: 3,
-    content: "今日の日記 3番",
-    date: 1712484952183,
-  },
-  {
-    id: 4,
-    emotion: 4,
-    content: "今日の日記 4番",
-    date: 1712484952184,
-  },
-  {
-    id: 5,
-    emotion: 5,
-    content: "今日の日記 5番",
-    date: 1712484952185,
-  },
-];
-
 function App() {
-  const [data, dispatch] = useReducer(reducer, dummyData);
+  const [data, dispatch] = useReducer(reducer, []);
   const dataId = useRef(6);
+
   const onCreate = (date, content, emotion) => {
     dispatch({
       type: "CREATE",
@@ -85,9 +55,11 @@ function App() {
     });
     dataId.current += 1;
   };
+
   const onRemove = (targetId) => {
     dispatch({ type: "REMOVE", targetId });
   };
+
   const onEdit = (targetId, date, content, emotion) => {
     dispatch({
       type: "EDIT",
