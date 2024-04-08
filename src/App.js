@@ -7,6 +7,7 @@ import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
 import NotFound from "./pages/NotFound";
+import { type } from "@testing-library/user-event/dist/type";
 
 const reducer = (state, action) => {
   let newState = [];
@@ -41,7 +42,7 @@ export const DiaryDispatchContext = React.createContext();
 
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
-  const dataId = useRef(6);
+  const dataId = useRef(0);
 
   const onCreate = (date, content, emotion) => {
     dispatch({
@@ -71,6 +72,17 @@ function App() {
       },
     });
   };
+
+  useEffect(() => {
+    const localData = localStorage.getItem("diary");
+    if (localData) {
+      const diaryList = JSON.parse(localData).sort(
+        (a, b) => parseInt(b.id) - parseInt(a.id)
+      );
+      dataId.current = parseInt(diaryList[0].id) + 1;
+      dispatch({ type: "INIT", data: diaryList });
+    }
+  }, []);
 
   return (
     <DiaryStateContext.Provider value={data}>
