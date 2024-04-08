@@ -46,6 +46,11 @@ const Home = () => {
     }
   }, [curDate, diaryList]);
 
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `感情日記帳`;
+  }, []);
+
   return (
     <div>
       <MyHeader
