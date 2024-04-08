@@ -1,41 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 import { DiaryDispatchContext } from "../App";
+
 import MyButton from "./MyButton";
 import MyHeader from "./MyHeader";
 import EmotionItem from "./EmotionItem";
 
-const emotionList = [
-  {
-    emotion_id: 1,
-    emotion_img: `/assets/emotion1.png`,
-    emotion_description: "超ハッピー",
-  },
-  {
-    emotion_id: 2,
-    emotion_img: `/assets/emotion2.png`,
-    emotion_description: "ハッピー",
-  },
-  {
-    emotion_id: 3,
-    emotion_img: `/assets/emotion3.png`,
-    emotion_description: "まあまあ",
-  },
-  {
-    emotion_id: 4,
-    emotion_img: `/assets/emotion4.png`,
-    emotion_description: "悪い",
-  },
-  {
-    emotion_id: 5,
-    emotion_img: `/assets/emotion5.png`,
-    emotion_description: "最低",
-  },
-];
-
-const getStringDate = (date) => {
-  return date.toISOString().slice(0, 10);
-};
+import { getStringDate } from "../utils/date";
+import { emotionList } from "../utils/emotion";
 
 const DiaryEditor = ({ isEdit, originData }) => {
   const navigate = useNavigate();

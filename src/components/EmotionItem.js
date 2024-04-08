@@ -9,7 +9,9 @@ const EmotionItem = ({
     <div
       className={[
         "EmotionItem",
-        isSelected ? `EmotionItem_on` : `EmotionItem_off`,
+        isSelected
+          ? `EmotionItem_on_${emotion_img.slice(15, 16)}`
+          : `EmotionItem_off`,
       ].join(" ")}
       onClick={() => onClick(emotion_id)}
     >
