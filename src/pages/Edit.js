@@ -22,6 +22,11 @@ const Edit = () => {
     }
   }, [id, diaryList, navigate]);
 
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `感情日記帳・${id}番・修正`;
+  }, [id]);
+
   return (
     <div>
       {originData && <DiaryEditor isEdit={true} originData={originData} />}
