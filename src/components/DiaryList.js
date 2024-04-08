@@ -5,7 +5,7 @@ import MyButton from "./MyButton";
 import DiaryItem from "./DiaryItem";
 
 const sortOptionList = [
-  { value: "lastest", name: "新着順" },
+  { value: "lastest", name: "新しい順" },
   { value: "oldest", name: "古い順" },
 ];
 
