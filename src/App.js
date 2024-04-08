@@ -7,7 +7,6 @@ import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
 import NotFound from "./pages/NotFound";
-import { type } from "@testing-library/user-event/dist/type";
 
 const reducer = (state, action) => {
   let newState = [];
