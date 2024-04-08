@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import MyButton from "./MyButton";
 import DiaryItem from "./DiaryItem";
 
@@ -14,7 +15,7 @@ const filterOptionList = [
   { value: "bad", name: "悪い感情だけ" },
 ];
 
-const ControlMenu = ({ value, onChange, optionList }) => {
+const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   return (
     <select
       className="ControlMenu"
@@ -28,7 +29,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
       ))}
     </select>
   );
-};
+});
 
 const DiaryList = ({ diaryList }) => {
   const navigate = useNavigate();
@@ -56,7 +57,6 @@ const DiaryList = ({ diaryList }) => {
     const filteredList =
       filter === "all" ? copyList : copyList.filter((it) => filterCallBack(it));
     const sortedList = filteredList.sort(compare);
-
     return sortedList;
   };
 

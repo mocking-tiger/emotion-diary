@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { DiaryStateContext } from "../App";
+
 import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
 import DiaryList from "../components/DiaryList";
@@ -9,11 +10,13 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [curDate, setCurDate] = useState(new Date());
   const headText = `${curDate.getFullYear()}年 ${curDate.getMonth() + 1}月`;
+
   const increaseMonth = () => {
     setCurDate(
       new Date(curDate.getFullYear(), curDate.getMonth() + 1, curDate.getDate())
     );
   };
+
   const decreaseMonth = () => {
     setCurDate(
       new Date(curDate.getFullYear(), curDate.getMonth() - 1, curDate.getDate())
