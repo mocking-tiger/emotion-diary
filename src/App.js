@@ -69,10 +69,10 @@ const dummyData = [
     date: 1712484952185,
   },
 ];
-console.log(new Date().getTime());
+
 function App() {
   const [data, dispatch] = useReducer(reducer, dummyData);
-  const dataId = useRef(0);
+  const dataId = useRef(6);
   const onCreate = (date, content, emotion) => {
     dispatch({
       type: "CREATE",
